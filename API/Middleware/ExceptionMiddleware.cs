@@ -14,7 +14,7 @@ namespace API.Middleware
         private readonly RequestDelegate next;
         private readonly IHostEnvironment environment;
 
-        public ExceptionMiddleware(ILogger<ExceptionMiddleware> logger,RequestDelegate next,IHostEnvironment environment)
+        public ExceptionMiddleware(RequestDelegate next,ILogger<ExceptionMiddleware> logger,IHostEnvironment environment)
         {
             _logger = logger;
             this.next = next;

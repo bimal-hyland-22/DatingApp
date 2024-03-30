@@ -3,6 +3,7 @@ using System.Text;
 using System.Text.Json;
 using API.Data;
 using API.Extensions;
+using API.Helpers;
 using API.Interfaces;
 using API.Middleware;
 using API.Services;
@@ -21,6 +22,7 @@ builder.Services.AddCors();
 // 
 builder.Services.AddApplicationServices(builder.Configuration);
 builder.Services.AddIdentityServices(builder.Configuration);
+
 
 var app = builder.Build();
 app.UseMiddleware<ExceptionMiddleware>();
