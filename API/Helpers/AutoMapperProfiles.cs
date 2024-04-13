@@ -2,6 +2,7 @@
 using AutoMapper;
 using API.DTOs;
 using API.Extensions;
+using API.Entities;
 namespace API.Helpers
 {
     public class AutoMapperProfiles : Profile
@@ -14,6 +15,9 @@ namespace API.Helpers
             CreateMap<Photo,PhotoDTO>();
             CreateMap<MemberUpdateDTO,AppUser>();
             CreateMap<RegisterDTO,AppUser>();
+            CreateMap<Message,MessageDto>()
+            .ForMember(d=>d.SenderPhotoUrl,o=>o.MapFrom(s=>s.Sender.Photos.FirstOrDefault(x=>x.IsMain).Url))
+             .ForMember(d=>d.RecipentPhotoUrl,o=>o.MapFrom(s=>s.Recipent.Photos.FirstOrDefault(x=>x.IsMain).Url));
         }
     }
 }
